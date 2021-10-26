@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '666a4c93c653981351f7975fa862853526b4a2fe1fdec276b9427081ea890c01fd355f783949d5beff1d2ef2d52b317211e432e16d63c8f91b9040d88b4601e4'
+  # config.secret_key = 'be09b2691b2200fb8def65b19d4467c1efabf0c26b9a8fbebbd5d6466d4b73054196d178d74533b39aa89fa455af4acbfb526d87e40a5d148e23b2a63068fe8a'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -58,12 +58,12 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  config.case_insensitive_keys = [:name]
+  config.case_insensitive_keys = [:email]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
-  config.strip_whitespace_keys = [:name]
+  config.strip_whitespace_keys = [:email]
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '62958c2db86a47629bbaa8c83587b09d87f5d50e5ba4df13efaad5da02a4b2245260f70973f392d52dfdcf93c7dec186ea8b9ddda3913ed22554ac7c0e309201'
+  # config.pepper = 'dca773c419b0d3d015926215aca5e9bc613eac0080463ec099d1574c87e3186873148eab656b48f9487a5bb42f03048f8796b53e2afc891c26e455bd200f978c'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false

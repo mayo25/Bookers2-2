@@ -1,3 +1,21 @@
+ <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+<header>
+ <body>
+  <p><strong>Title: </strong><%= @book.title %></p>
+  <p><strong>Opinion: </strong><%= @book.opinion %></p>
+
+   <%= link_to "Edit", edit_book_path(@book) %>
+   <%= link_to "Back", books_path %>
+   
+ </body>
+</header>
+
+
+
 <div>
   <%= link_to book_path(book.id) do %>
     <%= attachment_image_tag book, :image %>
@@ -11,3 +29,8 @@
     <%= link_to "destroy", book_path(@book), method: :delete %>
   <% end %>
 </div>
+
+<a href="#">編集</a>
+      <a href="#">削除</a>
+      <div class="author-case">
+<%= link_to post_image_path(post_image.id) do %>
