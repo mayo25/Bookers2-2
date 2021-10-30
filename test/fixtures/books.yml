@@ -2,10 +2,10 @@
 
 one:
   title: MyString
-  opinion: MyText
+  body: MyText
   user_id: 1
 
 two:
   title: MyString
-  opinion: MyText
+  body: MyText
   user_id: 1

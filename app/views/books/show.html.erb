@@ -1,36 +1,43 @@
- <% if flash[:notice] %>
+  <% if flash[:notice] %>
       <div class="flash">
         <%= flash[:notice] %>
       </div>
     <% end %>
 <header>
  <body>
+
   <p><strong>Title: </strong><%= @book.title %></p>
-  <p><strong>Opinion: </strong><%= @book.opinion %></p>
+  <p><strong>Opinion: </strong><%= @book.body %></p>
+  <p>投稿ユーザー画像<%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+   <p>ユーザーネーム：<%= @book.user.name %></p>
 
    <%= link_to "Edit", edit_book_path(@book) %>
-   <%= link_to "Back", books_path %>
-   
+  <% if @book.user == current_user %>
+   <%= link_to "Back", user_path(@book) , method: :delete%>
+<% end %>
  </body>
 </header>
 
+<h1>Book detail</h1>
+<table>
+  <thead>
+    <tr>
+      <th> <colspan="3"></th>
+      <th> <colspan="3"></th>
+    </tr>
+  </thead>
 
+  <tbody>
+   <% @book.each do |book| %>
+   <tr>
+    <%= link_to book_path(book) do %>
+    <th><%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></th>
+    <% end %>
+      <th><%= book.title %></th>
+      <th><%= book.body %></th>
+      <th><%= link_to "Show", book_path(book) %></th>
+      <th><%= link_to "Edit", edit_book_path(book)%></th>
+      <th><%= link_to "Destroy" , book_path(book),method: :delete, "data-confirm" => "本当に削除しますか？" %></th>
 
-<div>
-  <%= link_to book_path(book.id) do %>
-    <%= attachment_image_tag book, :image %>
-  <% end %>
-  <p>投稿ユーザー画像：<%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
-  <p>title：<%= @book.title %></p>
-  <p>opinion：<%= @book.opinion %></p>
-  <p>ユーザーネーム：<%= @book.user.name %></p>
-  
-  <% if @book.user == current_user %>
-    <%= link_to "destroy", book_path(@book), method: :delete %>
-  <% end %>
-</div>
-
-<a href="#">編集</a>
-      <a href="#">削除</a>
-      <div class="author-case">
-<%= link_to post_image_path(post_image.id) do %>
+    </tr>
+      <% end %>
