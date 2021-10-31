@@ -9,7 +9,7 @@ class BooksController < ApplicationController
     @book.user_id =current_user.id
     if @book.save
     #User詳細
-      redirect_to user_path(@book.id), notice: "Book was successfully created."
+      redirect_to book_path(@book.user_id), notice: "Book was successfully created."
     else
       render :index
     end
@@ -37,10 +37,10 @@ class BooksController < ApplicationController
   def destroy
     @book = Book.find(params[:id])
     if @book.destroy
-    redirect_to books_path(@book.id), notice: "Book was successfully destroy."
+    redirect_to book_path(@book.id), notice: "Book was successfully destroy."
     else
     render :index
-   end
+    end
   end
 
   private
