@@ -1,4 +1,23 @@
-
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8" />
+  <!-- FontAwesomeの読み込み -->
+<script src="https://kit.fontawesome.com/7d42c109cf.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" media="all" href="/assets/application-16605eadccf37c23d1fa922dd614f45b9f2cf25723e2e4032f1975b02ea7d11f.css" data-turbolinks-track="reload">
+    <script src="/assets/application-3ac47b8571e58aab844e8d0a988f0f55d8a16c1a75953470343f79cf1bec8528.js" data-turbolinks-track="reload"></script>
+  <title>Bookers2-debug</title><meta name="csrf-param" content="authenticity_token"><meta name="csrf-token" content="b25br6LCWkaxVs10EEjjv0lnYQr8FEuZ1nYPLPCOy9CjN9FhGgxXKdSg/riXRPnb86L5YPMLeR4xo9lXRUW6cg=="><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></head>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+       <ul class="navbar-nav ml-auto">
+         <div class="social">
+    </div>
+  </nav>
+</header>
       <h2>User info</h2>>
       <%= attachment_image_tag @user, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg" %>
   <tbody>
@@ -8,8 +27,11 @@
   </tr>
 </tbody>
   <% if @user.id == current_user.id %>
-    <p><%= link_to "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_34840", edit_user_path(@user) %></p>
-</div>
+  <div class="row">
+ <li>
+    <i class="fas fa-user-cog"><%= link_to "編集",  edit_user_path(@user) %></i>
+    </li>
+    </div>
   <% end %>
 </div>
 

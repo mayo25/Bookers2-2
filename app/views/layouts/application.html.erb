@@ -3,34 +3,32 @@
       <%= link_to "Bookers", root_path %>
     </li>
     <li>
-      <%= link_to 'Home', user_path(current_user.id) %>
+      <i class="fas fa-home"><%= link_to 'Home', user_path(current_user.id) %></i>
     </li>
     <li>
-      <%= link_to "Users", users_path %>
+      <i class="fas fa-users"><%= link_to "Users", users_path %></i>
     </li>
     <li>
-      <%= link_to "Books", books_path %>
+      <i class="fas fa-book-open"><%= link_to "Books", books_path %></i>
     </li>
     <li>
-      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+      <i class="fas fa-sign-out-alt"><%= link_to "Log out", destroy_user_session_path, method: :delete %></i>
     </li>
-
   <% else %>
   　<li>
       <%= link_to "Bookers", root_path %>
     </li>
     <li>
-      <%= link_to 'Home', root_path %>
+      <i class="fas fa-home"><%= link_to 'Home', root_path %></i>
     </li>
     <li>
-      <%= link_to "About", users_path %>
+      <i class="fas fa-link"><%= link_to "About", users_path %></i>
 
     <li>
-      <%= link_to "Sign_UP", new_user_registration_path %>
+      <i class="fas fa-user-plus"><%= link_to "Sign up", new_user_registration_path %></i>
     </li>
     <li>
-      <%= link_to "Log in", new_user_session_path %>
-
+      <i class="fas fa-sign-in-alt"><%= link_to "Log in", new_user_session_path %></i>
     </li>
  <% end %>
 
