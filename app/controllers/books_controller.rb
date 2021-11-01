@@ -1,12 +1,11 @@
 class BooksController < ApplicationController
-  def new
-    @book = Book.new
-
-  end
+  before_action :ensure_user, only: [:edit, :update, :destroy]
+  
 
   def create
     @book = Book.new(book_params)
     @book.user_id =current_user.id
+    @books = Book.all
     if @book.save
     #User詳細
       redirect_to book_path(@book.user_id), notice: "Book was successfully created."
@@ -17,7 +16,7 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
-    @book = book.user_id
+    @book = Book.new
   end
 
   def show
@@ -31,17 +30,17 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find(params[:id])
-    @book.update(book_params)
-    redirect_to book_path(@book.id), notice: "Book was successfully update."
+    if @book.update(book_params)
+      redirect_to book_path(@book.id), notice: "Book was successfully update."
+    else
+      render :edit
+    end
   end
 
   def destroy
     @book = Book.find(params[:id])
-    if @book.destroy
+    @book.destroy
     redirect_to book_path(@book.id), notice: "Book was successfully destroy."
-    else
-    render :index
-    end
   end
 
   private
@@ -50,3 +49,9 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body)
   end
 end
+
+  def ensure_user
+    @books = current_user.books
+    @book = @books.find_by(id: params[:id])
+    redirect_to book_path unless @book
+  end

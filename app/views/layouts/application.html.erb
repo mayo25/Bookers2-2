@@ -1,36 +1,51 @@
- <% if user_signed_in? %>
- 　　<li>
-      <%= link_to "Bookers", root_path %>
-    </li>
-    <li>
-      <i class="fas fa-home"><%= link_to 'Home', user_path(current_user.id) %></i>
-    </li>
-    <li>
-      <i class="fas fa-users"><%= link_to "Users", users_path %></i>
-    </li>
-    <li>
-      <i class="fas fa-book-open"><%= link_to "Books", books_path %></i>
-    </li>
-    <li>
-      <i class="fas fa-sign-out-alt"><%= link_to "Log out", destroy_user_session_path, method: :delete %></i>
-    </li>
+<!DOCTYPE html>
+<html lang="ja">
+  <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/7d42c109cf.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" media="all" href="/assets/application-16605eadccf37c23d1fa922dd614f45b9f2cf25723e2e4032f1975b02ea7d11f.css" data-turbolinks-track="reload">
+    <script src="/assets/application-3ac47b8571e58aab844e8d0a988f0f55d8a16c1a75953470343f79cf1bec8528.js" data-turbolinks-track="reload"></script>
+    <title>Bookers2-debug</title>
+    <meta name="csrf-param" content="authenticity_token">
+    <meta name="csrf-token" content="JS1ADgiYL9LTHux0aH5NBg2bB3+euh8alJixsOwCvR8PkxQ2ZYitJGelHCrxRHs4im7HREUgVDqW6T9O28gX1g=="><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></head>
+</head>
+<body>
+    <header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+       <p> <%= link_to "Bookers", root_path %></p>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse show" id="navbarNavDropdown" style="">
+        <ul class="navbar-nav ml-auto">
+  <% if user_signed_in? %>
+    <li><i class="fas fa-home"><%= link_to 'Home', user_path(current_user.id) %></i></li>
+    <li><i class="fas fa-users"><%= link_to "Users", users_path %></i> </li>
+    <li><i class="fas fa-book-open"><%= link_to "Books", books_path %></i></li>
+    <li><i class="fas fa-sign-out-alt"><%= link_to "Log out", destroy_user_session_path, method: :delete %></i></li>
   <% else %>
-  　<li>
-      <%= link_to "Bookers", root_path %>
-    </li>
-    <li>
-      <i class="fas fa-home"><%= link_to 'Home', root_path %></i>
-    </li>
-    <li>
-      <i class="fas fa-link"><%= link_to "About", users_path %></i>
+    <li><i class="fas fa-home"><%= link_to 'Home', root_path %></i></li>
+    <li><i class="fas fa-link"><%= link_to "About", home_about_path %></i>
+    <li><i class="fas fa-user-plus"><%= link_to "Sign up", new_user_registration_path %></i></li>
+    <li><i class="fas fa-sign-in-alt"><%= link_to "Log in", new_user_session_path %></i></li>
+  <% end %>
+  <%= yield %>
 
-    <li>
-      <i class="fas fa-user-plus"><%= link_to "Sign up", new_user_registration_path %></i>
-    </li>
-    <li>
-      <i class="fas fa-sign-in-alt"><%= link_to "Log in", new_user_session_path %></i>
-    </li>
- <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
 
-<%= yield %>
+    <footer>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="mx-auto">
+        <p>CopyRight Infratop.inc</p>
+      </div>
+    </div>
+  </div>
+</footer>
 
+</body>
+</html>
