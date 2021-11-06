@@ -1,74 +1,33 @@
-<main>
+
 <% if flash[:notice] %>
       <div class="flash">
         <%= flash[:notice] %>
       </div>
     <% end %>
- <div class="container px-5 px-sm-0">
-  <div class="row">
-    <div class="col-md-3">
-      <h2>User info</h2>
-      <%= attachment_image_tag @user, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg" %>
-    </div>
-    </div>
-  <table>
-    <tbody>
-      <tr>
-	  <th>name</th>
-	  <th><%= @user.name %></th>
-  </tr>
-  <tr>
-	  <th>introduction</th>
-	  <th><%= @user.introduction %></th>
-  </tr>
-</tbody></table>
+<%= render 'users/userinfo', user: @user %>
 
- <% if @user.id == current_user.id %>
-<div class="row">
-   <i class="fas fa-user-cog"><%= link_to "編集",  edit_user_path(@user) %></i>
-</div>
- <% end %>
-
-
-
-
-<h1>NEW BOOK</h1>
-<% if @book.errors.any? %>
-  <%= @book.errors.count %>件のエラーが発生しました
-  <% @book.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
-<% end %>
-
-<%= form_with model: @book, local:true do |f| %>
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-  <h4>Opinion</h4>
-  <%= f.text_area :body %>
-  <%= f.submit 'Create Book' %>
-<% end %>
-
+<%= render 'books/newbook', book: @book %>
 
 <h1>Books</h1>
-<table>
-  <thead>
-    <tr>
-      <th> <colspan="3"></th>
-      <th>Title</th>
-      <th>Opinion</th>
-    </tr>
-  </thead>
+ <table>
+    <thead>
+     <tr>
+       <th> <colspan="3"></th>
+       <th>Title</th>
+       <th>Opinion</th>
+     </tr>
+    </thead>
   <tbody>
-   <% @books.each do |book| %>
-   <tr>
-    <%= link_to book_path(book) do %>
-    <th><%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></th>
-
-    <% end %>
-      <th><%= link_to book_path(book)do %><%= book.title %></th><% end %>
+     <% @books.each do |book| %>
+     <tr>
+      <%= link_to book_path(book) do %>
+      <th><%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></th>
+      <% end %>
+      <th><%= link_to book_path(book)do %><%= book.title %></th>
+      <% end %>
       <th><%= book.title %></th>
       <th><%= book.body %></th>
-      </tbody>
-    </tr>
-      <% end %>
-</main>
+     </tr>
+     <% end %>
+  </tbody>
+</table>
