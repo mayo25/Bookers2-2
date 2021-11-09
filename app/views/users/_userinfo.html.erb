@@ -9,7 +9,7 @@
     <tbody>
      <tr>
 	    <th>name</th>
-        <th><%= user.name %></th>
+        <th><%= current_user.name %></th>
      </tr>
      <tr>
 	    <th>introduction</th>
@@ -20,6 +20,10 @@
 
  <% if user.id == current_user.id %>
 <div class="row">
-   <i class="fas fa-user-cog"><%= link_to "編集",  edit_user_path(user) %></i>
-</div>
- <% end %>
+  <%= link_to edit_user_path(user), class: "btn btn-danger", method: :get do %>
+   <i class="fas fa-user-cog"></i>
+<% end %>
+
+   <!--<i class="fas fa-user-cog"><%= link_to "編集",  edit_user_path(user) %></i>-->
+<!--</div>-->
+<!-- <% end %>-->
